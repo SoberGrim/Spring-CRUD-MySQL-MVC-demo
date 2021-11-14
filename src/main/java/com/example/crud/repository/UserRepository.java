@@ -9,5 +9,3 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long>, JpaSpecificationExecutor<User>, JpaRepository<User, Long> {
 }
-//public interface UserRepository extends CrudRepository<User, Long>, JpaSpecificationExecutor<User>, JpaRepository<User, Long> {
-//}
