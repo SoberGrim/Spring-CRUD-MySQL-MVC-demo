@@ -100,9 +100,9 @@ public class User implements UserDetails {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
-    private List<UserRole> userRoles = new ArrayList<>();
+    private Collection<UserRole> userRoles = new ArrayList<>();
 
-    public User(String username, String password, String firstname, String lastname, String age, String email, List<UserRole> userRoles) {
+    public User(String username, String password, String firstname, String lastname, String age, String email, Collection<UserRole> userRoles) {
         setUsername(username);
         setPassword(password);
         setFirstname(firstname);
@@ -184,11 +184,11 @@ public class User implements UserDetails {
         this.email = checkAndCorrectEncoding(email);
     }
 
-    public List<UserRole> getUserRoles() {
+    public Collection<UserRole> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(List<UserRole> userRoles) {
+    public void setUserRoles(Collection<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
 
@@ -198,7 +198,7 @@ public class User implements UserDetails {
 
 
 
-    private String roleToStr(List<UserRole> roles) {
+    private String roleToStr(Collection<UserRole> roles) {
         StringBuilder strRoles = new StringBuilder();
         if (roles.size() > 0) {
             for (UserRole role:roles) {
@@ -266,7 +266,7 @@ public class User implements UserDetails {
         setUserRoles(user.userRoles);
     }
 
-    public UserDTO merge(UserDTO user, List<UserRole> roles) {
+    public UserDTO merge(UserDTO user, Collection<UserRole> roles) {
         String id = user.getId();
         if ((id!=null)&&(id.matches("\\d+"))) setId(Long.valueOf(id));
 

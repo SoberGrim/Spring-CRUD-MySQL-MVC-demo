@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
     private String filterAge;
     private String filterEmail;
     private String filterUsername;
-    List<UserRole> filterRoles;
+    Collection<UserRole> filterRoles;
     private boolean filterStrict;
     private boolean isFilterActive = false;
     private List<User> userCache;
@@ -231,7 +231,7 @@ public class UserDaoImpl implements UserDao {
 
             if ((this.filterRoles != null) && (this.filterRoles.size() != 0)) {
                 boolean userHasSearchedRoles = false;
-                List<UserRole> userRoles = user.getUserRoles();
+                Collection<UserRole> userRoles = user.getUserRoles();
                 if (userRoles.size() == this.filterRoles.size()) {
                     for (UserRole userRole : userRoles) {
                         if (this.filterRoles.contains(userRole)) {
@@ -306,7 +306,7 @@ public class UserDaoImpl implements UserDao {
 
             if ((this.filterRoles != null) && (this.filterRoles.size() != 0)) {
                 boolean userHasSearchedRoles = true;
-                List<UserRole> userRoles = user.getUserRoles();
+                Collection<UserRole> userRoles = user.getUserRoles();
                 for (UserRole searchedRole : this.filterRoles) {
                     if (!userRoles.contains(searchedRole)) {
                         userHasSearchedRoles = false;
